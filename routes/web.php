@@ -1,11 +1,17 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/register', function () {
-    return view('auth.register');
-});
+
+
+
+// Show form
+Route::get('/register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+
+// Handle form submission
+Route::post('/register', [RegisterController::class, 'register']);
